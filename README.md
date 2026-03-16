@@ -54,7 +54,7 @@ The scrollbar overview ruler adds colored markers alongside the minimap — one 
 
 Uses VSCode's built-in folding region support — zero runtime overhead. Your headers appear as readable text labels in the minimap the moment you open a markdown file. No configuration required.
 
-Works with any file VSCode recognizes as `markdown`, including `.mdx`.
+Works with any file VSCode recognizes as `markdown`, including `.mdx`, `.qmd` (Quarto), and `.rmd` (R Markdown).
 
 > Requires `editor.minimap.showRegionSectionHeaders: true` — this is the VSCode default.
 
@@ -125,6 +125,18 @@ The header text foreground color can also be customized:
 ```json
 "workbench.colorCustomizations": {
   "minimapMarkdownHeaders.headerForeground": "#FFFFFF"
+}
+```
+
+---
+
+### Always show minimap for markdown files
+
+If you use `editor.minimap.autohide`, the minimap may be hidden when you open markdown files. Add this to your `settings.json` to keep it visible for all supported languages:
+
+```json
+"[markdown][quarto][rmd]": {
+    "editor.minimap.autohide": "none"
 }
 ```
 

@@ -11,7 +11,9 @@
         "Other"
     ],
     "activationEvents": [
-        "onLanguage:markdown"
+        "onLanguage:markdown",
+        "onLanguage:quarto",
+        "onLanguage:rmd"
     ],
     "main": "./dist/extension.js",
     "contributes": {
@@ -30,6 +32,16 @@
         "languages": [
             {
                 "id": "markdown",
+                "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "quarto",
+                "extensions": [".qmd"],
+                "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "rmd",
+                "extensions": [".rmd", ".Rmd"],
                 "configuration": "./language-configuration.json"
             }
         ],
@@ -137,7 +149,11 @@
         "overview",
         "section",
         "headings",
-        "document structure"
+        "document structure",
+        "quarto",
+        "qmd",
+        "rmarkdown",
+        "rmd"
     ],
     "pricing": "Free",
     "scripts": {

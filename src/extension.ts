@@ -6,6 +6,8 @@ import { goToNextHeader, goToPreviousHeader } from './navigationCommands';
 // Module-level so deactivate() and the config handler can both reach it
 let activeManager: DecorationManager | undefined;
 
+const SUPPORTED_LANGUAGES = new Set(['markdown', 'quarto', 'rmd']);
+
 function getConfig() {
     return vscode.workspace.getConfiguration('markdownMinimapHeaders');
 }
@@ -23,7 +25,7 @@ function headerForeground(): string {
 }
 
 function updateDecorations(editor: vscode.TextEditor | undefined): void {
-    if (!editor || editor.document.languageId !== 'markdown' || !activeManager) {
+    if (!editor || !SUPPORTED_LANGUAGES.has(editor.document.languageId) || !activeManager) {
         return;
     }
     activeManager.update(editor, parseHeaders(editor.document));
@@ -55,7 +57,7 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
         vscode.commands.registerCommand('markdownMinimapHeaders.goToNextHeader', () => {
             const editor = vscode.window.activeTextEditor;
-            if (editor && editor.document.languageId === 'markdown') {
+            if (editor && SUPPORTED_LANGUAGES.has(editor.document.languageId)) {
                 goToNextHeader(editor, parseHeaders(editor.document));
             }
         }),
@@ -64,7 +66,7 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
         vscode.commands.registerCommand('markdownMinimapHeaders.goToPreviousHeader', () => {
             const editor = vscode.window.activeTextEditor;
-            if (editor && editor.document.languageId === 'markdown') {
+            if (editor && SUPPORTED_LANGUAGES.has(editor.document.languageId)) {
                 goToPreviousHeader(editor, parseHeaders(editor.document));
             }
         }),
