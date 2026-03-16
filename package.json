@@ -2,7 +2,7 @@
     "name": "markdown-minimap-headers",
     "displayName": "Markdown Minimap Headers",
     "description": "Makes markdown headers visible as text labels and colored blocks in the VSCode minimap for quick document navigation",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "engines": {
         "vscode": "^1.88.0"
     },
