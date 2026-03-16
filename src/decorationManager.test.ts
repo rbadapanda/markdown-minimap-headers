@@ -32,12 +32,12 @@ describe('DecorationManager', () => {
         const calls = vi.mocked(vscode.window.createTextEditorDecorationType).mock.calls;
         const bgIds = calls.map(([opts]) => (opts.backgroundColor as { id: string }).id);
         expect(bgIds).toEqual([
-            'minimapMarkdownHeaders.h1Background',
-            'minimapMarkdownHeaders.h2Background',
-            'minimapMarkdownHeaders.h3Background',
-            'minimapMarkdownHeaders.h4Background',
-            'minimapMarkdownHeaders.h5Background',
-            'minimapMarkdownHeaders.h6Background',
+            'minimapMarkdownHeaders.h1',
+            'minimapMarkdownHeaders.h2',
+            'minimapMarkdownHeaders.h3',
+            'minimapMarkdownHeaders.h4',
+            'minimapMarkdownHeaders.h5',
+            'minimapMarkdownHeaders.h6',
         ]);
     });
 

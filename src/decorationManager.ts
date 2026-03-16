@@ -4,7 +4,7 @@ import type { ParsedHeader } from './headerParser';
 export class DecorationManager implements vscode.Disposable {
     private readonly decorationTypes: Map<number, vscode.TextEditorDecorationType>;
 
-    constructor(showScrollbar: boolean, headerForeground: string) {
+    constructor(showScrollbar: boolean, headerForeground: string = '') {
         this.decorationTypes = new Map();
         const foreground = headerForeground.trim() || new vscode.ThemeColor('minimapMarkdownHeaders.headerForeground');
         for (let level = 1; level <= 6; level++) {
