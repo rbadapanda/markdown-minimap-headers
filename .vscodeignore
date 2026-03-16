@@ -1,0 +1,16 @@
+src/
+node_modules/
+out/
+.vscode/
+.agents/
+.claude/
+.kiro/
+.git/
+.github/
+*.ts
+*.map
+*.vsix
+esbuild.mjs
+tsconfig.json
+.gitignore
+package-lock.json

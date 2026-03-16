@@ -1,0 +1,117 @@
+{
+    "name": "markdown-minimap-headers",
+    "displayName": "Markdown Minimap Headers",
+    "description": "Makes markdown headers visible as text labels and colored blocks in the VSCode minimap for quick document navigation",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.88.0"
+    },
+    "categories": ["Other"],
+    "activationEvents": ["onLanguage:markdown"],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "markdownMinimapHeaders.goToNextHeader",
+                "title": "Go to Next Markdown Header",
+                "category": "Markdown"
+            },
+            {
+                "command": "markdownMinimapHeaders.goToPreviousHeader",
+                "title": "Go to Previous Markdown Header",
+                "category": "Markdown"
+            }
+        ],
+        "languages": [
+            {
+                "id": "markdown",
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "configuration": {
+            "title": "Markdown Minimap Headers",
+            "properties": {
+                "markdownMinimapHeaders.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable colored minimap decorations for markdown headers. Navigation commands are always available. Note: Layer 1 text labels (folding markers) are unaffected by this setting."
+                },
+                "markdownMinimapHeaders.scrollbarDecorations": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show header level indicators in the editor scrollbar (overview ruler) in addition to the minimap background highlights."
+                },
+                "markdownMinimapHeaders.headerForeground": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Foreground (text) color for decorated markdown header lines. Accepts any CSS color value (e.g. '#ffffff', 'rgba(255,255,255,0.9)'). Leave empty to use the default theme color (dark: dark-gold, light: white)."
+                }
+            }
+        },
+        "colors": [
+            {
+                "id": "minimapMarkdownHeaders.headerForeground",
+                "description": "Foreground (text) color for decorated markdown header lines",
+                "defaults": { "dark": "#1a1200", "light": "#ffffff", "highContrast": "#ffffff" }
+            },
+            {
+                "id": "minimapMarkdownHeaders.h1",
+                "description": "Scrollbar color for H1 markdown headers",
+                "defaults": { "dark": "#FFD700", "light": "#0969DA", "highContrast": "#FFD700" }
+            },
+            {
+                "id": "minimapMarkdownHeaders.h2",
+                "description": "Scrollbar color for H2 markdown headers",
+                "defaults": { "dark": "#FFD700B2", "light": "#0969DAB2", "highContrast": "#FFD700B2" }
+            },
+            {
+                "id": "minimapMarkdownHeaders.h3",
+                "description": "Scrollbar color for H3 markdown headers",
+                "defaults": { "dark": "#FFD70066", "light": "#0969DA66", "highContrast": "#FFD70066" }
+            },
+            {
+                "id": "minimapMarkdownHeaders.h4",
+                "description": "Scrollbar color for H4 markdown headers",
+                "defaults": { "dark": "#FFD70033", "light": "#0969DA33", "highContrast": "#FFD70033" }
+            },
+            {
+                "id": "minimapMarkdownHeaders.h5",
+                "description": "Scrollbar color for H5 markdown headers",
+                "defaults": { "dark": "#FFD70019", "light": "#0969DA19", "highContrast": "#FFD70019" }
+            },
+            {
+                "id": "minimapMarkdownHeaders.h6",
+                "description": "Scrollbar color for H6 markdown headers",
+                "defaults": { "dark": "#FFD7000D", "light": "#0969DA0D", "highContrast": "#FFD7000D" }
+            }
+        ]
+    },
+    "publisher": "rbadapanda",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rbadapanda/markdown-minimap-headers.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rbadapanda/markdown-minimap-headers/issues"
+    },
+    "homepage": "https://github.com/rbadapanda/markdown-minimap-headers#readme",
+    "keywords": [
+        "markdown", "minimap", "headers", "navigation", "overview",
+        "section", "headings", "document structure"
+    ],
+    "pricing": "Free",
+    "scripts": {
+        "vscode:prepublish": "npm run build",
+        "compile": "tsc --noEmit",
+        "build": "node esbuild.mjs",
+        "watch": "node esbuild.mjs --watch",
+        "test": "vitest run"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.88.0",
+        "esbuild": "^0.20.0",
+        "typescript": "^5.4.0",
+        "vitest": "^1.0.0"
+    }
+}
