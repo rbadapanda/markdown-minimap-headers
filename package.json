@@ -2,12 +2,16 @@
     "name": "markdown-minimap-headers",
     "displayName": "Markdown Minimap Headers",
     "description": "Makes markdown headers visible as text labels and colored blocks in the VSCode minimap for quick document navigation",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "engines": {
         "vscode": "^1.88.0"
     },
-    "categories": ["Other"],
-    "activationEvents": ["onLanguage:markdown"],
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:markdown"
+    ],
     "main": "./dist/extension.js",
     "contributes": {
         "commands": [
@@ -52,37 +56,65 @@
             {
                 "id": "minimapMarkdownHeaders.headerForeground",
                 "description": "Foreground (text) color for decorated markdown header lines",
-                "defaults": { "dark": "#1a1200", "light": "#ffffff", "highContrast": "#ffffff" }
+                "defaults": {
+                    "dark": "#1a1200",
+                    "light": "#ffffff",
+                    "highContrast": "#ffffff"
+                }
             },
             {
                 "id": "minimapMarkdownHeaders.h1",
                 "description": "Scrollbar color for H1 markdown headers",
-                "defaults": { "dark": "#FFD700", "light": "#0969DA", "highContrast": "#FFD700" }
+                "defaults": {
+                    "dark": "#FFD700",
+                    "light": "#0969DA",
+                    "highContrast": "#FFD700"
+                }
             },
             {
                 "id": "minimapMarkdownHeaders.h2",
                 "description": "Scrollbar color for H2 markdown headers",
-                "defaults": { "dark": "#FFD700B2", "light": "#0969DAB2", "highContrast": "#FFD700B2" }
+                "defaults": {
+                    "dark": "#FFD700B2",
+                    "light": "#0969DAB2",
+                    "highContrast": "#FFD700B2"
+                }
             },
             {
                 "id": "minimapMarkdownHeaders.h3",
                 "description": "Scrollbar color for H3 markdown headers",
-                "defaults": { "dark": "#FFD70066", "light": "#0969DA66", "highContrast": "#FFD70066" }
+                "defaults": {
+                    "dark": "#FFD70066",
+                    "light": "#0969DA66",
+                    "highContrast": "#FFD70066"
+                }
             },
             {
                 "id": "minimapMarkdownHeaders.h4",
                 "description": "Scrollbar color for H4 markdown headers",
-                "defaults": { "dark": "#FFD70033", "light": "#0969DA33", "highContrast": "#FFD70033" }
+                "defaults": {
+                    "dark": "#FFD70033",
+                    "light": "#0969DA33",
+                    "highContrast": "#FFD70033"
+                }
             },
             {
                 "id": "minimapMarkdownHeaders.h5",
                 "description": "Scrollbar color for H5 markdown headers",
-                "defaults": { "dark": "#FFD70019", "light": "#0969DA19", "highContrast": "#FFD70019" }
+                "defaults": {
+                    "dark": "#FFD70019",
+                    "light": "#0969DA19",
+                    "highContrast": "#FFD70019"
+                }
             },
             {
                 "id": "minimapMarkdownHeaders.h6",
                 "description": "Scrollbar color for H6 markdown headers",
-                "defaults": { "dark": "#FFD7000D", "light": "#0969DA0D", "highContrast": "#FFD7000D" }
+                "defaults": {
+                    "dark": "#FFD7000D",
+                    "light": "#0969DA0D",
+                    "highContrast": "#FFD7000D"
+                }
             }
         ]
     },
@@ -97,8 +129,14 @@
     },
     "homepage": "https://github.com/rbadapanda/markdown-minimap-headers#readme",
     "keywords": [
-        "markdown", "minimap", "headers", "navigation", "overview",
-        "section", "headings", "document structure"
+        "markdown",
+        "minimap",
+        "headers",
+        "navigation",
+        "overview",
+        "section",
+        "headings",
+        "document structure"
     ],
     "pricing": "Free",
     "scripts": {
