@@ -10,6 +10,7 @@ out/
 *.ts
 *.map
 *.vsix
+images/
 esbuild.mjs
 tsconfig.json
 .gitignore

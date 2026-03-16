@@ -6,6 +6,7 @@
     "engines": {
         "vscode": "^1.88.0"
     },
+    "icon": "icon.png",
     "categories": [
         "Other"
     ],
@@ -149,7 +150,7 @@
     "devDependencies": {
         "@types/vscode": "^1.88.0",
         "esbuild": "^0.20.0",
-        "typescript": "^5.4.0",
+"typescript": "^5.4.0",
         "vitest": "^1.0.0"
     }
 }

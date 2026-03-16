@@ -36,13 +36,13 @@ Minimap (before)          Minimap (after)
 └──────────────┘          └─────────────────┘
 ```
 ### With Markdown Minimap Headers Extension
-![](https://github.com/user-attachments/assets/e4c060fd-f17e-46bd-8fde-7d78d7b39d8e)
+![](images/markdown-minimap.gif)
 
 ### Before and after comparison
-![](https://github.com/user-attachments/assets/f2d29f11-389b-4cee-831f-4af59bde25bd)
+![](images/side-by-side.gif)
 
 ### Extension Settings
-![](https://github.com/user-attachments/assets/f4b8bcff-1c4a-4788-aba6-e5b1cbd48b12)
+![](images/markdown-minimap-settings.png)
 
 The scrollbar overview ruler adds colored markers alongside the minimap — one per header, fading with depth — so you can spot document structure at a glance even without reading the labels.
 
