@@ -38,12 +38,12 @@
                 "markdownMinimapHeaders.enabled": {
                     "type": "boolean",
                     "default": true,
-                    "description": "When disabled, header highlights are removed from the editor and the overview ruler. Headers continue to appear as text labels in the minimap regardless of this setting."
+                    "description": "Show colored header highlights in the editor and overview ruler. Note: minimap text labels are always shown regardless of this setting."
                 },
-                "markdownMinimapHeaders.scrollbarDecorations": {
+                "markdownMinimapHeaders.turnOffScrollbarDecorations": {
                     "type": "boolean",
-                    "default": true,
-                    "description": "When disabled, header indicators are removed from the overview ruler (scrollbar). Editor highlights and minimap labels are unaffected."
+                    "default": false,
+                    "description": "Turn off header level indicators in the overview ruler (scrollbar). Editor highlights and minimap labels are not impacted."
                 },
                 "markdownMinimapHeaders.headerForeground": {
                     "type": "string",

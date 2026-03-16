@@ -14,8 +14,8 @@ function isEnabled(): boolean {
     return getConfig().get('enabled', true);
 }
 
-function showScrollbar(): boolean {
-    return getConfig().get('scrollbarDecorations', true);
+function turnOffScrollbar(): boolean {
+    return getConfig().get('turnOffScrollbarDecorations', false);
 }
 
 function headerForeground(): string {
@@ -33,7 +33,7 @@ export function activate(context: vscode.ExtensionContext): void {
     console.log('Markdown Minimap Headers is now active');
 
     if (isEnabled()) {
-        activeManager = new DecorationManager(showScrollbar(), headerForeground());
+        activeManager = new DecorationManager(!turnOffScrollbar(), headerForeground());
         updateDecorations(vscode.window.activeTextEditor);
     }
 
@@ -79,7 +79,7 @@ export function activate(context: vscode.ExtensionContext): void {
             activeManager?.dispose();
             activeManager = undefined;
             if (isEnabled()) {
-                activeManager = new DecorationManager(showScrollbar(), headerForeground());
+                activeManager = new DecorationManager(!turnOffScrollbar(), headerForeground());
                 updateDecorations(vscode.window.activeTextEditor);
             }
         }),

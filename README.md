@@ -95,7 +95,7 @@ code --install-extension rbadapanda.markdown-minimap-headers
 | Setting | Default | Description |
 |---------|---------|-------------|
 | `markdownMinimapHeaders.enabled` | `true` | Toggle colored minimap decorations on/off |
-| `markdownMinimapHeaders.scrollbarDecorations` | `true` | Show header markers in the scrollbar overview ruler |
+| `markdownMinimapHeaders.turnOffScrollbarDecorations` | `false` | Turn off header level indicators in the overview ruler (scrollbar). Editor highlights and minimap labels remain visible. |
 | `markdownMinimapHeaders.headerForeground` | `""` | Text color for decorated header lines (CSS color value) |
 
 ### Custom colors
