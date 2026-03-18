@@ -4,7 +4,7 @@
 
 [![VSCode](https://img.shields.io/badge/VSCode-1.88%2B-blue?logo=visualstudiocode)](https://code.visualstudio.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.1.9-orange)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.0.0-orange)](CHANGELOG.md)
 
 ---
 
@@ -12,11 +12,12 @@ AI coding tools use markdown files extensively for agent instructions, memory ba
 
 The same goes for READMEs, design docs, architecture notes, and wikis. If you write long markdown documents, you know the pain: scroll endlessly trying to find that one section, lose your place, repeat. The minimap becomes useless white noise.
 
-**Markdown Minimap Headers** fixes that. It adds three layers of navigation intelligence to every markdown file:
+**Markdown Minimap Headers** fixes that. It adds three layers of navigation intelligence to every markdown file — and extends into Jupyter Notebooks too:
 
 1. **Header labels** — your `##` headings appear as readable text in the minimap
 2. **Scrollbar markers** — each header level gets a distinct color in the scrollbar overview ruler and a background highlight on the header line
 3. **Keyboard navigation** — jump between headers without leaving your hands
+4. **Jupyter Notebook support** — colored header highlights and cross-cell keyboard navigation for `.ipynb` files
 
 ---
 
@@ -107,6 +108,18 @@ All commands are available in the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P
 
 > Tip: `Alt+Shift+↑/↓` mirrors the "move line" gesture (`Alt+↑/↓`) — easy to remember as "jump between sections instead of lines".
 
+### Jupyter Notebook support
+
+Jupyter Notebooks (`.ipynb`) get first-class header navigation. Markdown cells with `#` headings receive the same colored background highlights as regular markdown files, and keyboard navigation works seamlessly across cell boundaries.
+
+- **Colored header highlights** — markdown cells show the same theme-aware background colors per heading level
+- **Cross-cell navigation** — the next/previous header commands automatically jump between cells when no more headers exist in the current cell
+- **Dedicated notebook commands** — `Go to Next Header in Notebook` and `Go to Previous Header in Notebook` for explicit cross-cell jumps
+
+Decorations are applied automatically as you scroll through notebook cells — no configuration needed.
+
+> Note: Scrollbar markers (overview ruler) and minimap labels are not available in notebooks due to [VSCode API limitations](#known-limitations). Background highlights and keyboard navigation work fully.
+
 ---
 
 ## Installation
@@ -174,7 +187,7 @@ If you use `editor.minimap.autohide`, the minimap may be hidden when you open ma
 
 - **Code blocks**: The folding-marker approach (Layer 1) cannot distinguish headers inside fenced code blocks or YAML frontmatter — these may appear as labels in the minimap. The colored decorations and navigation commands correctly skip them.
 
-- **Jupyter Notebooks (.ipynb)**: Background color decorations and keyboard navigation work for headers in markdown cells, but scrollbar markers (overview ruler) and minimap labels are not supported. This is a VSCode architectural limitation — notebook cell editors don't expose the overview ruler API to extensions.
+- **Jupyter Notebooks (.ipynb)**: Scrollbar markers (overview ruler) and minimap labels are not available in notebooks. Background highlights and keyboard navigation work fully — see [Jupyter Notebook support](#jupyter-notebook-support) above.
 
   | Feature | Notebooks | Regular Markdown |
   |---------|-----------|------------------|
@@ -183,9 +196,7 @@ If you use `editor.minimap.autohide`, the minimap may be hidden when you open ma
   | Scrollbar markers (overview ruler) | ❌ Not available | ✅ Works |
   | Minimap labels | ❌ Not available | ✅ Works |
 
-  **Why the gaps?** Notebook cells are embedded editors without individual scrollbars. The notebook has one scrollbar for the entire document, but VSCode doesn't provide a public API for extensions to add decorations to it. The [Notebook API](https://code.visualstudio.com/api/extension-guides/notebook) doesn't expose `setDecorations` or overview ruler support for cell editors.
-
-  Background color decorations are applied automatically as you scroll through notebook cells, providing visual hierarchy for markdown headers. Keyboard navigation works across cells — when no more headers exist in the current cell, the regular next/previous commands automatically jump to the next cell with a header.
+  **Why?** Notebook cells are embedded editors without individual scrollbars. The notebook has one scrollbar for the entire document, but VSCode doesn't provide a public API for extensions to add decorations to it. The [Notebook API](https://code.visualstudio.com/api/extension-guides/notebook) doesn't expose `setDecorations` or overview ruler support for cell editors.
 
 ---
 

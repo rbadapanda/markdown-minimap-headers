@@ -2,7 +2,7 @@
     "name": "markdown-minimap-headers",
     "displayName": "Markdown Minimap Headers",
     "description": "Renders markdown headers as text labels in the VSCode minimap and colored blocks in the scrollbar overview, with keyboard commands to jump to the next or previous heading.",
-    "version": "0.1.9",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.88.0"
     },
