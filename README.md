@@ -54,7 +54,7 @@ The scrollbar overview ruler adds colored markers alongside the minimap — one 
 
 Uses VSCode's built-in folding region support — zero runtime overhead. Your headers appear as readable text labels in the minimap the moment you open a markdown file. No configuration required.
 
-Works with any file VSCode recognizes as `markdown`, including `.mdx`, `.qmd` (Quarto), and `.rmd` (R Markdown).
+Works with any file VSCode recognizes as `markdown`, including `.qmd` (Quarto), `.rmd` (R Markdown), `.mdx` (MDX), and `.markdoc` (Markdoc).
 
 > Requires `editor.minimap.showRegionSectionHeaders: true` — this is the VSCode default.
 
@@ -85,6 +85,25 @@ Jump between headers without a mouse, the Outline panel, or search:
 | `Markdown: Go to Previous Markdown Header` | Move up to the nearest heading |
 
 Both are available in the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) when a markdown file is active. Bind them to keys you already have muscle memory for.
+
+**Suggested keybindings** — add to your `keybindings.json` (`Ctrl+Shift+P` → "Open Keyboard Shortcuts (JSON)"):
+
+```json
+[
+  {
+    "key": "alt+shift+down",
+    "command": "markdownMinimapHeaders.goToNextHeader",
+    "when": "editorLangId =~ /markdown|quarto|rmd|mdx|markdoc/"
+  },
+  {
+    "key": "alt+shift+up",
+    "command": "markdownMinimapHeaders.goToPreviousHeader",
+    "when": "editorLangId =~ /markdown|quarto|rmd|mdx|markdoc/"
+  }
+]
+```
+
+> Tip: `Alt+Shift+↑/↓` mirrors the "move line" gesture (`Alt+↑/↓`) — easy to remember as "jump between sections instead of lines".
 
 ---
 
@@ -135,7 +154,7 @@ The header text foreground color can also be customized:
 If you use `editor.minimap.autohide`, the minimap may be hidden when you open markdown files. Add this to your `settings.json` to keep it visible for all supported languages:
 
 ```json
-"[markdown][quarto][rmd]": {
+"[markdown][quarto][rmd][mdx][markdoc]": {
     "editor.minimap.autohide": "none"
 }
 ```

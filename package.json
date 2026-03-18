@@ -1,19 +1,26 @@
 {
     "name": "markdown-minimap-headers",
     "displayName": "Markdown Minimap Headers",
-    "description": "Makes markdown headers visible as text labels and colored blocks in the VSCode minimap for quick document navigation",
-    "version": "0.1.7",
+    "description": "Renders markdown headers as text labels in the VSCode minimap and colored blocks in the scrollbar overview, with keyboard commands to jump to the next or previous heading.",
+    "version": "0.1.8",
     "engines": {
         "vscode": "^1.88.0"
     },
     "icon": "icon.png",
     "categories": [
+        "Visualization",
         "Other"
     ],
+    "galleryBanner": {
+        "color": "#0D1117",
+        "theme": "dark"
+    },
     "activationEvents": [
         "onLanguage:markdown",
         "onLanguage:quarto",
-        "onLanguage:rmd"
+        "onLanguage:rmd",
+        "onLanguage:mdx",
+        "onLanguage:markdoc"
     ],
     "main": "./dist/extension.js",
     "contributes": {
@@ -46,6 +53,20 @@
                 "extensions": [
                     ".rmd",
                     ".Rmd"
+                ],
+                "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "mdx",
+                "extensions": [
+                    ".mdx"
+                ],
+                "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "markdoc",
+                "extensions": [
+                    ".markdoc"
                 ],
                 "configuration": "./language-configuration.json"
             }
@@ -158,7 +179,9 @@
         "quarto",
         "qmd",
         "rmarkdown",
-        "rmd"
+        "rmd",
+        "mdx",
+        "markdoc"
     ],
     "pricing": "Free",
     "scripts": {

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.8] — 2026-03-17
+
+### Added
+- Support for MDX (`.mdx`) files
+- Support for Markdoc (`.markdoc`) files
+- Updated documentation to reflect new supported file types
+
 ## [0.1.0] — 2026-03-14
 
 ### Added

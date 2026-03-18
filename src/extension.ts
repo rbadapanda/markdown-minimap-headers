@@ -6,7 +6,7 @@ import { goToNextHeader, goToPreviousHeader } from './navigationCommands';
 // Module-level so deactivate() and the config handler can both reach it
 let activeManager: DecorationManager | undefined;
 
-const SUPPORTED_LANGUAGES = new Set(['markdown', 'quarto', 'rmd']);
+const SUPPORTED_LANGUAGES = new Set(['markdown', 'quarto', 'rmd', 'mdx', 'markdoc']);
 
 function getConfig() {
     return vscode.workspace.getConfiguration('markdownMinimapHeaders');
