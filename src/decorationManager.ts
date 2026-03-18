@@ -24,7 +24,8 @@ export class DecorationManager implements vscode.Disposable {
         const byLevel = new Map<number, vscode.Range[]>();
         for (const header of headers) {
             const ranges = byLevel.get(header.level) ?? [];
-            ranges.push(new vscode.Range(header.line, 0, header.line, 0));
+            const line = editor.document.lineAt(header.line);
+            ranges.push(line.range);
             byLevel.set(header.level, ranges);
         }
 

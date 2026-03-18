@@ -14,7 +14,14 @@ import { DecorationManager } from './decorationManager';
 import type { ParsedHeader } from './headerParser';
 
 function makeEditor() {
-    return { setDecorations: vi.fn() } as unknown as vscode.TextEditor;
+    return { 
+        setDecorations: vi.fn(),
+        document: {
+            lineAt: vi.fn((line: number) => ({
+                range: { start: { line, character: 0 }, end: { line, character: 100 } }
+            }))
+        }
+    } as unknown as vscode.TextEditor;
 }
 
 describe('DecorationManager', () => {

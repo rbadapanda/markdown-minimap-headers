@@ -4,7 +4,7 @@
 
 [![VSCode](https://img.shields.io/badge/VSCode-1.88%2B-blue?logo=visualstudiocode)](https://code.visualstudio.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.1.0-orange)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.1.9-orange)](CHANGELOG.md)
 
 ---
 
@@ -15,7 +15,7 @@ The same goes for READMEs, design docs, architecture notes, and wikis. If you wr
 **Markdown Minimap Headers** fixes that. It adds three layers of navigation intelligence to every markdown file:
 
 1. **Header labels** — your `##` headings appear as readable text in the minimap
-2. **Scrollbar markers** — each header level gets a distinct color in the scrollbar overview ruler and editor gutter
+2. **Scrollbar markers** — each header level gets a distinct color in the scrollbar overview ruler and a background highlight on the header line
 3. **Keyboard navigation** — jump between headers without leaving your hands
 
 ---
@@ -83,8 +83,10 @@ Jump between headers without a mouse, the Outline panel, or search:
 |---------|-------------|
 | `Markdown: Go to Next Markdown Header` | Move down to the next heading |
 | `Markdown: Go to Previous Markdown Header` | Move up to the nearest heading |
+| `Markdown: Go to Next Header in Notebook` | Jump to the next heading across notebook cells |
+| `Markdown: Go to Previous Header in Notebook` | Jump to the previous heading across notebook cells |
 
-Both are available in the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) when a markdown file is active. Bind them to keys you already have muscle memory for.
+All commands are available in the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`). The regular next/previous commands work in any markdown file. In Jupyter Notebooks, they automatically fall through to the next cell when no more headers exist in the current cell — so a single keybinding navigates the entire notebook seamlessly.
 
 **Suggested keybindings** — add to your `keybindings.json` (`Ctrl+Shift+P` → "Open Keyboard Shortcuts (JSON)"):
 
@@ -171,6 +173,19 @@ If you use `editor.minimap.autohide`, the minimap may be hidden when you open ma
 ## Known Limitations
 
 - **Code blocks**: The folding-marker approach (Layer 1) cannot distinguish headers inside fenced code blocks or YAML frontmatter — these may appear as labels in the minimap. The colored decorations and navigation commands correctly skip them.
+
+- **Jupyter Notebooks (.ipynb)**: Background color decorations and keyboard navigation work for headers in markdown cells, but scrollbar markers (overview ruler) and minimap labels are not supported. This is a VSCode architectural limitation — notebook cell editors don't expose the overview ruler API to extensions.
+
+  | Feature | Notebooks | Regular Markdown |
+  |---------|-----------|------------------|
+  | Background color on headers | ✅ Works | ✅ Works |
+  | Keyboard navigation | ✅ Works (across cells) | ✅ Works |
+  | Scrollbar markers (overview ruler) | ❌ Not available | ✅ Works |
+  | Minimap labels | ❌ Not available | ✅ Works |
+
+  **Why the gaps?** Notebook cells are embedded editors without individual scrollbars. The notebook has one scrollbar for the entire document, but VSCode doesn't provide a public API for extensions to add decorations to it. The [Notebook API](https://code.visualstudio.com/api/extension-guides/notebook) doesn't expose `setDecorations` or overview ruler support for cell editors.
+
+  Background color decorations are applied automatically as you scroll through notebook cells, providing visual hierarchy for markdown headers. Keyboard navigation works across cells — when no more headers exist in the current cell, the regular next/previous commands automatically jump to the next cell with a header.
 
 ---
 
